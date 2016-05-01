@@ -22,6 +22,14 @@ class Customer
 		puts "There is no such customer with name: #{customer_name}"
 	end
 
+	def purchase(product)
+		if product.stock > 0
+			Transaction.new(self, product)
+		else
+			raise OutOfStockError, "This product is out of stock"
+		end
+	end
+
 	private
 
 	def add_to_names
