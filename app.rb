@@ -11,7 +11,7 @@ Product.new(title: "LEGO Firehouse Headquarter", price: 199.99, stock: 0)
 
 puts Product.all.count # Should return 3
 
-# Product.new(title: "LEGO Iron Man vs. Ultron", price: 22.99, stock: 55)
+Product.new(title: "LEGO Iron Man vs. Ultron", price: 22.99, stock: 55)
 # Should return DuplicateProductError: 'LEGO Iron Man vs. Ultron' already exists.
 
 nanoblock = Product.find_by_title("Nano Block Empire State Building")
@@ -33,8 +33,6 @@ puts products_in_stock.include?(firehouse) # Should return false
 Customer.new(name: "Walter Latimer")
 Customer.new(name: "Julia Van Cleve")
 
-Customer.new(name: "Mary Ampatziadou")
-
 puts Customer.all.count # Should return 2
 
 # Customer.new(name: "Walter Latimer")
@@ -42,18 +40,11 @@ puts Customer.all.count # Should return 2
 
 walter = Customer.find_by_name("Walter Latimer")
 
-julia = Customer.find_by_name("Julia Van Cleve")
-mary = Customer.find_by_name("Mary Ampatziadou")
-
 puts walter.name # Should return "Walter Latimer"
 
 # TRANSACTIONS
 
 transaction = Transaction.new(walter, nanoblock)
-
-transaction1 = Transaction.new(julia, nanoblock)
-transaction2 = Transaction.new(mary, firehouse)
-transaction3 = Transaction.new(mary, nanoblock)
 
 puts transaction.id # Should return 1
 puts transaction.product == nanoblock # Should return true
@@ -66,11 +57,11 @@ puts nanoblock.stock # Should return 11
 
 # PURCHASES
 
-# puts walter.purchase(nanoblock)
+puts walter.purchase(nanoblock)
 
-# puts Transaction.all.count # Should return 2
-# transaction2 = Transaction.find(1)
-# puts transaction2.product == nanoblock # Should return true
+puts Transaction.all.count # Should return 2
+transaction2 = Transaction.find(1)
+puts transaction2.product == nanoblock # Should return true
 
-# walter.purchase(firehouse)
+walter.purchase(firehouse)
 # Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
