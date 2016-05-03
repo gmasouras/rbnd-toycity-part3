@@ -1,0 +1,7 @@
+- About four to five hours
+- Understanding the class variables - methods
+- 1) Sort the transactions by the customer’s name
+  2) Return the transactions of a specific customer
+  3) Return the transactions bigger than a specific price
+  I was affected by relational databases methods to build those additional features
+- Think by myself the object oriented programming without any help. By saying this, I mean that by looking a game or an app, I wish I could break it by myself to simple objects and start building it.
