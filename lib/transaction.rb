@@ -18,8 +18,24 @@ class Transaction
 		@@transactions
 	end
 
+	def self.find_by_customer(customer_name)
+		customer_transactions = @@transactions.select {|transaction|  transaction.customer.name == customer_name}
+	end
+
+	def self.find_bigger(product_price)
+		product_transactions = @@transactions.select {|transaction|  transaction.product.price > product_price}
+	end
+
+	def self.sort_by_customer
+		@@transactions.sort_by {|transaction| transaction.customer.name}
+	end
+
 	def self.find(num)
-		@@transactions[num-1]
+		if num >= 1 && num < @@transactions.length + 1
+			@@transactions[num-1]
+		else
+			puts "There is no transaction with id: #{num}"
+		end
 	end
 
 	private
